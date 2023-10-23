@@ -7,8 +7,8 @@
 int main()
 {
     std::cout << "Hello World!\n";
-    grid = new Grid;
-    grid.print();
+    Grid* grid = new Grid;
+    grid->print();
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
