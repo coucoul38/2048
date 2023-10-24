@@ -49,7 +49,7 @@ public:
 		int x = rand() % 4;
 		int y = rand() % 4;
 		int available = 0;
-		std::vector<int> availableList;
+		std::vector<std::vector<int>> availableList;
 
 		//check for available spots
 		for (int i = 0; i < size_x; i++)
@@ -58,20 +58,26 @@ public:
 			{
 				if (grid[i][z] == 0) {
 					available++;
-					availableList.insert(availableList.end(),{ i,z });
+					//availableList.insert(availableList.end(),{ i,z });
+					availableList.push_back({i,z});
 				}
 			}
 		}
 		if (available == 0) {
+			std::cout << "YOU LOOSE\n";
 			return 0;
 		}
 		else {
 			std::cout << "\nNumber of available spots to place a new block: " << available <<"\n";
-			std::cout << "availableList:\n";
+			/*std::cout << "availableList:\n";
 			for (int i = 0; i < availableList.size()-1; i+=2) {
 				std::cout << "[" << availableList[i] << ","<< availableList[i+1]<<"], ";
 			}
-			std::cout << "\n";
+			std::cout << "\n";*/
+
+			//place cube in one of the spots
+			int spot = rand() % availableList.size();
+			grid[availableList[spot][0]][availableList[spot][1]] = 2;
 		}
 	}
 
