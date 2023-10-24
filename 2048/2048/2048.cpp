@@ -27,10 +27,11 @@ char readDirection(char direction) {
         std::cout << "Exiting loop\n";
         return 'e';
     }
+    else return '0';
 }
 
 
-int main()
+void main()
 {
     bool exit = false;
     std::cout << "Hello World!\n";
@@ -46,6 +47,9 @@ int main()
         key = readDirection(player_input);
         if (key == 'e') {
             exit = true;
+        }
+        else if (key!='0') {
+            grid->addBlock();
         }
     }
 }

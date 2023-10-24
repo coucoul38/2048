@@ -45,7 +45,31 @@ public:
 		}
 	}
 
-	~Grid() 
+	int addBlock() {
+		int x = rand() % 4;
+		int y = rand() % 4;
+		int available = 0;
+		int* availableList;
+
+		//check for available spots
+		for (size_t i = 0; i < size_x; i++)
+		{
+			for (size_t z = 0; z < size_y; z++)
+			{
+				if (grid[i][z] == 0) {
+					available++;
+				}
+			}
+		}
+		if (available == 0) {
+			return 0;
+		}
+		else {
+			std::cout << "\nNumber of available spots to place a new block: " << available <<"\n";
+		}
+	}
+
+	~Grid()
 	{
 		std::cout << "out";
 	}
