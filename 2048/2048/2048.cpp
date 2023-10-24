@@ -7,7 +7,7 @@
 int main()
 {
     std::cout << "Hello World!\n";
-    Grid* grid = new Grid;
+    Grid* grid = new Grid(4,4);
     grid->print();
 }
 
