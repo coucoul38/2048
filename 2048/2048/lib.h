@@ -10,15 +10,26 @@ public:
 
 	Grid(int x, int y) 
 	{	
+		srand(time(NULL)); //Initialize random seed
 		size_x = x;
 		size_y = y;
+		int starterBlock1[] = {rand() % 4 , rand() % 4};
+		int starterBlock2[] = { rand() % 4 , rand() % 4 };
 		for (size_t i = 0; i < size_x; i++)
 		{
 			int* col = (int*) malloc(sizeof(int)*size_y);
 			//std::vector<int> col = {};
 			for (size_t z = 0; z < size_y; z++)
-			{
-				col[z] = 0;
+			{	
+				if (i == starterBlock1[0] && z == starterBlock1[1]) {
+					col[z] = 2;
+				} else if (i == starterBlock2[0] && z == starterBlock2[1]) {
+					col[z] = 2;
+				}
+				else
+				{
+					col[z] = 0;
+				}
 			}
 			grid[i] = col;
 		}
@@ -36,7 +47,7 @@ public:
 
 	~Grid() 
 	{
-		free(grid);
+		std::cout << "out";
 	}
 };
 
