@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <string>
 
 class Grid {
 public:
@@ -43,6 +44,43 @@ public:
 			}
 			std::cout << "\n";
 		}
+	}
+
+	int slide(std::string direction) {
+		//remove all zeros
+
+
+		if (direction == "up") {
+			
+		}
+		else if (direction == "down") {
+
+		}
+		else if (direction == "left") {
+			for (int col = 0; col < size_x; col++)
+			{
+				for (int row = size_y; row<1; row--) {
+					if (grid[col][row] != 0 && grid[col][row - 1] == 0) {
+						grid[col][row - 1] = grid[col][row];
+						grid[col][row] = 0;
+						std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row - 1 << "]\n";
+					}
+				}
+			}
+		}
+		else if (direction == "right") {
+			for (int col = 0; col < size_x; col++)
+			{
+				for (int row = 0; row < size_y-1; row++) {
+					if (grid[col][row] != 0 && grid[col][row + 1] == 0) {
+						grid[col][row + 1] = grid[col][row];
+						grid[col][row] = 0;
+						std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row + 1 << "]\n";
+					}
+				}
+			}
+		}
+		return 0;
 	}
 
 	int addBlock() {

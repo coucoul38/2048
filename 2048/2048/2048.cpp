@@ -3,31 +3,32 @@
 
 #include <iostream>
 #include "lib.h"
+#include <string>
 
 
-char readDirection(char direction) {
+std::string readDirection(char direction) {
 
-    if (direction == 'H' || direction == 'h') {
+    if (direction == '8' || direction == 'z') {
         std::cout << "Vers le haut";
-        return 'h';
+        return "up";
     }
-    else if (direction == 'B' || direction == 'b') {
+    else if (direction == '5' || direction == 's') {
         std::cout << "Vers le bas";
-        return 'b';
+        return "down";
     }
-    else if (direction == 'G' || direction == 'g') {
+    else if (direction == '4' || direction == 'q') {
         std::cout << "Vers la gauche\n";
-        return 'g';
+        return "left";
     }
-    else if (direction == 'D' || direction == 'd') {
+    else if (direction == '6' || direction == 'd') {
         std::cout << "Vers la droite\n";
-        return 'd';
+        return "right";
     }
-    else if (direction == 'E' || direction == 'e') {
+    else if (direction == '0' || direction == 'e') {
         std::cout << "Exiting loop\n";
-        return 'e';
+        return "exit";
     }
-    else return '0';
+    else return "not_valid";
 }
 
 
@@ -38,17 +39,18 @@ void main()
     Grid* grid = new Grid(4,4);
 
     char player_input;
-    int key;
+    std::string key;
 
     while(!exit) {
         grid->print();
         std::cout << "B/H/D/G pour deplacer ou E pour sortir: ";
         std::cin >> player_input;
         key = readDirection(player_input);
-        if (key == 'e') {
+        if (key == "exit") {
             exit = true;
         }
-        else if (key!='0') {
+        else if (key!="not_valid") {
+            grid->slide(key);
             grid->addBlock();
         }
     }
