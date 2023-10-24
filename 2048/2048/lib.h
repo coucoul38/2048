@@ -49,15 +49,16 @@ public:
 		int x = rand() % 4;
 		int y = rand() % 4;
 		int available = 0;
-		int* availableList;
+		std::vector<int> availableList;
 
 		//check for available spots
-		for (size_t i = 0; i < size_x; i++)
+		for (int i = 0; i < size_x; i++)
 		{
-			for (size_t z = 0; z < size_y; z++)
+			for (int z = 0; z < size_y; z++)
 			{
 				if (grid[i][z] == 0) {
 					available++;
+					availableList.insert(availableList.end(),{ i,z });
 				}
 			}
 		}
@@ -66,6 +67,11 @@ public:
 		}
 		else {
 			std::cout << "\nNumber of available spots to place a new block: " << available <<"\n";
+			std::cout << "availableList:\n";
+			for (int i = 0; i < availableList.size()-1; i+=2) {
+				std::cout << "[" << availableList[i] << ","<< availableList[i+1]<<"], ";
+			}
+			std::cout << "\n";
 		}
 	}
 
