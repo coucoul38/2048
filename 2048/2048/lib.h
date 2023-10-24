@@ -59,11 +59,11 @@ public:
 		else if (direction == "left") {
 			for (int col = 0; col < size_x; col++)
 			{
-				for (int row = size_y; row<1; row--) {
+				for (int row = size_y-1; row>=0; row--) {
 					if (grid[col][row] != 0 && grid[col][row - 1] == 0) {
 						grid[col][row - 1] = grid[col][row];
 						grid[col][row] = 0;
-						std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row - 1 << "]\n";
+						//std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row - 1 << "]\n";
 					}
 				}
 			}
@@ -75,7 +75,7 @@ public:
 					if (grid[col][row] != 0 && grid[col][row + 1] == 0) {
 						grid[col][row + 1] = grid[col][row];
 						grid[col][row] = 0;
-						std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row + 1 << "]\n";
+						//std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row + 1 << "]\n";
 					}
 				}
 			}
@@ -106,7 +106,7 @@ public:
 			return 0;
 		}
 		else {
-			std::cout << "\nNumber of available spots to place a new block: " << available <<"\n";
+			//std::cout << "\nNumber of available spots to place a new block: " << available <<"\n";
 			/*std::cout << "availableList:\n";
 			for (int i = 0; i < availableList.size()-1; i+=2) {
 				std::cout << "[" << availableList[i] << ","<< availableList[i+1]<<"], ";

@@ -9,19 +9,15 @@
 std::string readDirection(char direction) {
 
     if (direction == '8' || direction == 'z') {
-        std::cout << "Vers le haut";
         return "up";
     }
     else if (direction == '5' || direction == 's') {
-        std::cout << "Vers le bas";
         return "down";
     }
     else if (direction == '4' || direction == 'q') {
-        std::cout << "Vers la gauche\n";
         return "left";
     }
     else if (direction == '6' || direction == 'd') {
-        std::cout << "Vers la droite\n";
         return "right";
     }
     else if (direction == '0' || direction == 'e') {
