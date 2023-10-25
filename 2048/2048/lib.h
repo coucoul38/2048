@@ -54,10 +54,7 @@ public:
 		}
 	}
 
-	int slide(std::string direction) {
-		//remove all zeros
-
-
+	void slide(std::string direction) {
 		if (direction == "up") {
 			
 		}
@@ -70,11 +67,9 @@ public:
 		else if (direction == "right") {
 			slideRight();
 		}
-		return 0;
 	}
 
 	void slideLeft() {
-		
 		for (int col = 0; col < size_x; col++)
 		{
 			for (int row = size_y - 1; row >= 0; row--) {
@@ -84,9 +79,15 @@ public:
 					slideLeft();
 					//std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row - 1 << "]\n";
 				}
+				else if (grid[col][row - 1] == grid[col][row]) { //if two blocks are the same, combine them
+					grid[col][row - 1] += grid[col][row];
+					grid[col][row] = 0;
+					//slideLeft();
+				}
 			}
 		}
 	}
+
 	void slideRight() {
 		for (int col = 0; col < size_x; col++)
 		{
