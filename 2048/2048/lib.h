@@ -47,6 +47,7 @@ public:
 	}
 
 	void print() {
+		system("cls");
 		for (int col = 0; col < size_x; col++)
 		{
 			for (int row = 0; row < size_y; row++) {
@@ -73,10 +74,10 @@ public:
 
 
 		if (direction == "up") {
-			
+			slideUp();
 		}
 		else if (direction == "down") {
-
+			slideDown();
 		}
 		else if (direction == "left") {
 			slideLeft();
@@ -99,7 +100,7 @@ public:
 					grid[col][row - 1] += grid[col][row];
 					mergeGrid[col][row - 1] = true;
 					grid[col][row] = 0;
-					//slideLeft();
+					slideLeft();
 				}
 			}
 		}
@@ -118,7 +119,46 @@ public:
 					grid[col][row + 1] += grid[col][row];
 					mergeGrid[col][row + 1] = true;
 					grid[col][row] = 0;
-					//slideLeft();
+					slideRight();
+				}
+			}
+		}
+	}
+
+	void slideDown() {
+		for (int col = 0; col < size_x - 1; col++)
+		{
+			for (int row = 0; row < size_y; row++) {
+				if (grid[col][row] != 0 && grid[col + 1][row] == 0) {
+					grid[col + 1][row] = grid[col][row];
+					grid[col][row] = 0;
+					slideDown();
+				}
+				else if (grid[col+1][row] == grid[col][row] && mergeGrid[col][row] == false) { //if two blocks are the same, combine them
+					grid[col+1][row] += grid[col][row];
+					mergeGrid[col+1][row] = true;
+					grid[col][row] = 0;
+					slideDown();
+				}
+			}
+		}
+	}
+
+	void slideUp() {
+		for (int col = size_x-1; col >=1; col--)
+		{
+			for (int row = 0; row < size_y; row++) {
+				//std::cout << "\n Col: " << col << " Row: " << row;
+				if (grid[col][row] != 0 && grid[col - 1][row] == 0) {
+					grid[col - 1][row] = grid[col][row];
+					grid[col][row] = 0;
+					slideUp();
+				}
+				else if (grid[col - 1][row] == grid[col][row] && mergeGrid[col][row] == false) { //if two blocks are the same, combine them
+					grid[col - 1][row] += grid[col][row];
+					mergeGrid[col - 1][row] = true;
+					grid[col][row] = 0;
+					slideUp();
 				}
 			}
 		}
