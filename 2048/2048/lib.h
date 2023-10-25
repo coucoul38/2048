@@ -3,6 +3,8 @@
 #include <string>
 
 const std::string red("\033[0;31m");
+const std::string green("\033[0;32m");
+const std::string yellowBG("\033[0;43m");
 const std::string reset("\033[0m");
 
 class Grid {
@@ -49,7 +51,7 @@ public:
 		{
 			for (int row = 0; row < size_y; row++) {
 				if (grid[col][row] != 0) {
-					std::cout << red << grid[col][row] << reset << " "; //blocks are displayed in red
+					std::cout << yellowBG << grid[col][row] << reset << " "; //blocks are displayed in red
 				}
 				else {
 					std::cout << grid[col][row] << " ";
@@ -111,7 +113,6 @@ public:
 					grid[col][row + 1] = grid[col][row];
 					grid[col][row] = 0;
 					slideRight();
-					//std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row + 1 << "]\n";
 				}
 				else if (grid[col][row + 1] == grid[col][row] && mergeGrid[col][row] == false) { //if two blocks are the same, combine them
 					grid[col][row + 1] += grid[col][row];
