@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 
+const std::string red("\033[0;31m");
+const std::string reset("\033[0m");
+
 class Grid {
 public:
 	int size_x;
@@ -40,7 +43,12 @@ public:
 		for (size_t col = 0; col < size_x; col++)
 		{
 			for (size_t row = 0; row < size_y; row++) {
-				std::cout << grid[col][row] << " ";
+				if (grid[col][row] != 0) {
+					std::cout << red << grid[col][row] << reset << " ";
+				}
+				else {
+					std::cout << grid[col][row] << " ";
+				}
 			}
 			std::cout << "\n";
 		}
@@ -57,30 +65,40 @@ public:
 
 		}
 		else if (direction == "left") {
-			for (int col = 0; col < size_x; col++)
-			{
-				for (int row = size_y-1; row>=0; row--) {
-					if (grid[col][row] != 0 && grid[col][row - 1] == 0) {
-						grid[col][row - 1] = grid[col][row];
-						grid[col][row] = 0;
-						//std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row - 1 << "]\n";
-					}
-				}
-			}
+			slideLeft();
 		}
 		else if (direction == "right") {
-			for (int col = 0; col < size_x; col++)
-			{
-				for (int row = 0; row < size_y-1; row++) {
-					if (grid[col][row] != 0 && grid[col][row + 1] == 0) {
-						grid[col][row + 1] = grid[col][row];
-						grid[col][row] = 0;
-						//std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row + 1 << "]\n";
-					}
+			slideRight();
+		}
+		return 0;
+	}
+
+	void slideLeft() {
+		
+		for (int col = 0; col < size_x; col++)
+		{
+			for (int row = size_y - 1; row >= 0; row--) {
+				if (grid[col][row] != 0 && grid[col][row - 1] == 0) {
+					grid[col][row - 1] = grid[col][row];
+					grid[col][row] = 0;
+					slideLeft();
+					//std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row - 1 << "]\n";
 				}
 			}
 		}
-		return 0;
+	}
+	void slideRight() {
+		for (int col = 0; col < size_x; col++)
+		{
+			for (int row = 0; row < size_y - 1; row++) {
+				if (grid[col][row] != 0 && grid[col][row + 1] == 0) {
+					grid[col][row + 1] = grid[col][row];
+					grid[col][row] = 0;
+					slideRight();
+					//std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row + 1 << "]\n";
+				}
+			}
+		}
 	}
 
 	int addBlock() {
