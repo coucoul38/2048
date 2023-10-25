@@ -1,5 +1,5 @@
 ﻿  2048.cpp
 C:\Users\ncoulon\Documents\GitHub\2048\2048\2048\lib.h(20,13): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
 C:\Users\ncoulon\Documents\GitHub\2048\2048\2048\2048.cpp(31,1): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
-C:\Users\ncoulon\Documents\GitHub\2048\2048\2048\lib.h(195): warning C4715: 'Grid::addBlock' : les chemins de contrôle ne retournent pas tous une valeur
+C:\Users\ncoulon\Documents\GitHub\2048\2048\2048\lib.h(204): warning C4715: 'Grid::addBlock' : les chemins de contrôle ne retournent pas tous une valeur
   2048.vcxproj -> C:\Users\ncoulon\Documents\GitHub\2048\2048\x64\Debug\2048.exe
