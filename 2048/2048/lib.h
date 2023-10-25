@@ -10,6 +10,7 @@ public:
 	int size_x;
 	int size_y;
 	int** grid = (int**)malloc(sizeof(int*)*size_x);
+	bool** mergeGrid = (bool**)malloc(sizeof(bool*) * size_x); //this grid is used to know if a block resulted from a merge with another block, to prevent "cascade merge" in the same move
 	//std::vector<int> grid = {};
 
 	Grid(int x, int y) 
@@ -19,11 +20,13 @@ public:
 		size_y = y;
 		int starterBlock1[] = {rand() % 4 , rand() % 4};
 		int starterBlock2[] = { rand() % 4 , rand() % 4 };
-		for (size_t i = 0; i < size_x; i++)
+
+		//create the grid
+		for (int i = 0; i < size_x; i++)
 		{
 			int* col = (int*) malloc(sizeof(int)*size_y);
-			//std::vector<int> col = {};
-			for (size_t z = 0; z < size_y; z++)
+			bool* mergeCol = (bool*)malloc(sizeof(bool) * size_y);
+			for (int z = 0; z < size_y; z++)
 			{	
 				if (i == starterBlock1[0] && z == starterBlock1[1]) {
 					col[z] = 2;
@@ -34,17 +37,19 @@ public:
 				{
 					col[z] = 0;
 				}
+				mergeCol[z] = false;
 			}
 			grid[i] = col;
+			mergeGrid[i] = mergeCol;
 		}
 	}
 
 	void print() {
-		for (size_t col = 0; col < size_x; col++)
+		for (int col = 0; col < size_x; col++)
 		{
-			for (size_t row = 0; row < size_y; row++) {
+			for (int row = 0; row < size_y; row++) {
 				if (grid[col][row] != 0) {
-					std::cout << red << grid[col][row] << reset << " ";
+					std::cout << red << grid[col][row] << reset << " "; //blocks are displayed in red
 				}
 				else {
 					std::cout << grid[col][row] << " ";
@@ -55,6 +60,16 @@ public:
 	}
 
 	void slide(std::string direction) {
+		//reset mergeGrid
+		for (int i = 0; i < size_x; i++)
+		{
+			for (int z = 0; z < size_y; z++)
+			{
+				mergeGrid[i][z] = false;
+			}
+		}
+
+
 		if (direction == "up") {
 			
 		}
@@ -77,10 +92,10 @@ public:
 					grid[col][row - 1] = grid[col][row];
 					grid[col][row] = 0;
 					slideLeft();
-					//std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row - 1 << "]\n";
 				}
-				else if (grid[col][row - 1] == grid[col][row]) { //if two blocks are the same, combine them
+				else if (grid[col][row - 1] == grid[col][row] && mergeGrid[col][row]==false) { //if two blocks are the same, combine them
 					grid[col][row - 1] += grid[col][row];
+					mergeGrid[col][row - 1] = true;
 					grid[col][row] = 0;
 					//slideLeft();
 				}
@@ -97,6 +112,12 @@ public:
 					grid[col][row] = 0;
 					slideRight();
 					//std::cout << "Moving [" << col << "," << row << "] to [" << col << "," << row + 1 << "]\n";
+				}
+				else if (grid[col][row + 1] == grid[col][row] && mergeGrid[col][row] == false) { //if two blocks are the same, combine them
+					grid[col][row + 1] += grid[col][row];
+					mergeGrid[col][row + 1] = true;
+					grid[col][row] = 0;
+					//slideLeft();
 				}
 			}
 		}
@@ -115,8 +136,7 @@ public:
 			{
 				if (grid[i][z] == 0) {
 					available++;
-					//availableList.insert(availableList.end(),{ i,z });
-					availableList.push_back({i,z});
+					availableList.push_back({i,z}); //save the spot in the list
 				}
 			}
 		}
@@ -125,14 +145,7 @@ public:
 			return 0;
 		}
 		else {
-			//std::cout << "\nNumber of available spots to place a new block: " << available <<"\n";
-			/*std::cout << "availableList:\n";
-			for (int i = 0; i < availableList.size()-1; i+=2) {
-				std::cout << "[" << availableList[i] << ","<< availableList[i+1]<<"], ";
-			}
-			std::cout << "\n";*/
-
-			//place cube in one of the spots
+			//pick a random available spot in the list and add a block here
 			int spot = rand() % availableList.size();
 			grid[availableList[spot][0]][availableList[spot][1]] = 2;
 		}

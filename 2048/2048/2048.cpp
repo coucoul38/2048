@@ -5,7 +5,6 @@
 #include "lib.h"
 #include <string>
 
-
 std::string readDirection(char direction) {
 
     if (direction == '8' || direction == 'z') {
@@ -39,7 +38,7 @@ void main()
 
     while(!exit) {
         grid->print();
-        std::cout << "B/H/D/G pour deplacer ou E pour sortir: ";
+        std::cout << "ZQSD pour deplacer ou E pour sortir: ";
         std::cin >> player_input;
         key = readDirection(player_input);
         if (key == "exit") {
