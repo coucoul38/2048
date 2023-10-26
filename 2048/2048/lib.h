@@ -4,7 +4,7 @@
 
 const std::string red("\033[0;31m");
 const std::string green("\033[0;32m");
-const std::string yellowBG("\033[0;43m");
+const std::string yellowBG("\033[30;43m");
 const std::string reset("\033[0m");
 
 class Grid {
@@ -30,14 +30,14 @@ public:
 			bool* mergeCol = (bool*) malloc(sizeof(bool) * size_y);
 			for (int z = 0; z < size_y; z++)
 			{	
-				/*if (i == starterBlock1[0] && z == starterBlock1[1]) {
+				if (i == starterBlock1[0] && z == starterBlock1[1]) {
 					col[z] = 2;
 				} else if (i == starterBlock2[0] && z == starterBlock2[1]) {
 					col[z] = 2;
-				}*/
-				if (i == 0) {
-					col[z] = 2;
 				}
+				/*if (i == 0) {
+					col[z] = 2;
+				}*/
 				else
 				{
 					col[z] = 0;
