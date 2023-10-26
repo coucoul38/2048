@@ -2,8 +2,8 @@
 #include <iostream>
 #include <string>
 
-const std::string red("\033[0;31m");
-const std::string green("\033[0;32m");
+const std::string redBG("\033[30;41m");
+const std::string greenBG("\033[30;42m");
 const std::string yellowBG("\033[30;43m");
 const std::string reset("\033[0m");
 
@@ -50,7 +50,7 @@ public:
 	}
 
 	void print() {
-		//system("cls");
+		system("cls");
 		for (int col = 0; col < size_x; col++)
 		{
 			for (int row = 0; row < size_y; row++) {
