@@ -11,8 +11,8 @@ class Grid {
 public:
 	int size_x;
 	int size_y;
-	int** grid = (int**)malloc(sizeof(int*)*size_x);
-	bool** mergeGrid = (bool**)malloc(sizeof(bool*) * size_x); //this grid is used to know if a block resulted from a merge with another block, to prevent "cascade merge" in the same move
+	int** grid;
+	bool** mergeGrid; //this grid is used to know if a block resulted from a merge with another block, to prevent "cascade merge" in the same move
 	//std::vector<int> grid = {};
 
 	Grid(int x, int y) 
@@ -20,6 +20,10 @@ public:
 		srand(time(NULL)); //Initialize random seed
 		size_x = x;
 		size_y = y;
+
+		grid = (int**)malloc(sizeof(int*) * size_x);
+		mergeGrid = (bool**)malloc(sizeof(bool*) * size_x); //this grid is used to know if a block resulted from a merge with another block, to prevent "cascade merge" in the same move
+
 		int starterBlock1[] = {rand() % 4 , rand() % 4};
 		int starterBlock2[] = { rand() % 4 , rand() % 4 };
 
@@ -30,14 +34,14 @@ public:
 			bool* mergeCol = (bool*) malloc(sizeof(bool) * size_y);
 			for (int z = 0; z < size_y; z++)
 			{	
-				if (i == starterBlock1[0] && z == starterBlock1[1]) {
+				/*if (i == starterBlock1[0] && z == starterBlock1[1]) {
 					col[z] = 2;
 				} else if (i == starterBlock2[0] && z == starterBlock2[1]) {
 					col[z] = 2;
-				}
-				/*if (i == 0) {
-					col[z] = 2;
 				}*/
+				if (i == 0) {
+					col[z] = 1024;
+				}
 				else
 				{
 					col[z] = 0;
@@ -168,7 +172,7 @@ public:
 		}
 	}
 
-	int addBlock() {
+	bool addBlock() {
 		int x = rand() % 4;
 		int y = rand() % 4;
 		int available = 0;
@@ -187,7 +191,7 @@ public:
 		}
 		if (available == 0) {
 			std::cout << "YOU LOOSE\n";
-			return 0;
+			return true;
 		}
 		else {
 			//pick a random available spot in the list and add a block here
@@ -199,6 +203,13 @@ public:
 	~Grid()
 	{
 		std::cout << "out";
+		for (int i = 0; i < size_x; i++)
+		{
+			free(grid[i]);
+			free(mergeGrid[i]);
+		}
+		free(grid);
+		free(mergeGrid);
 	}
 };
 
