@@ -26,8 +26,8 @@ public:
 		//create the grid
 		for (int i = 0; i < size_x; i++)
 		{
-			int* col = (int*) malloc(sizeof(int)*size_y);
-			bool* mergeCol = (bool*)malloc(sizeof(bool) * size_y);
+			int* col = (int*) malloc(sizeof(int) * size_y);
+			bool* mergeCol = (bool*) malloc(sizeof(bool) * size_y);
 			for (int z = 0; z < size_y; z++)
 			{	
 				/*if (i == starterBlock1[0] && z == starterBlock1[1]) {
