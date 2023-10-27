@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "lib.h"
+#include "integration.h"
 #include <string>
 #include <conio.h>
 
@@ -40,11 +41,11 @@ void main()
     bool exit = false;
     std::cout << "Hello World!\n";
     Grid* grid = new Grid(4,4);
-
+    IntGrid* intGrid = new IntGrid(4,4);
     char player_input;
     std::string key;
 
-    while(!exit) {
+    /*while (!exit) {
         grid->print();
         std::cout << "Utilisez les touches directionelles pour déplacer les blocks";
         key = readDirection();
@@ -53,5 +54,10 @@ void main()
         }
         exit = grid->slide(key);
         grid->addBlock();
-    }
+    }*/
+
+    //INTEGRATION TEST
+    intGrid->print();
+    intGrid->slide("down");
+    intGrid->print();
 }

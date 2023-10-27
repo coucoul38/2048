@@ -13,7 +13,14 @@ public:
 	int size_y;
 	int** grid;
 	bool** mergeGrid; //this grid is used to know if a block resulted from a merge with another block, to prevent "cascade merge" in the same move
-	//std::vector<int> grid = {};
+
+	Grid(int input[4][4]) {
+		grid = (int**)malloc(sizeof(int*) * 4);
+		for (int col = 0; col < 4; col++)
+		{
+			col = input[col];
+		}
+	}
 
 	Grid(int x, int y) 
 	{	
@@ -34,13 +41,10 @@ public:
 			bool* mergeCol = (bool*) malloc(sizeof(bool) * size_y);
 			for (int z = 0; z < size_y; z++)
 			{	
-				/*if (i == starterBlock1[0] && z == starterBlock1[1]) {
+				if (i == starterBlock1[0] && z == starterBlock1[1]) {
 					col[z] = 2;
 				} else if (i == starterBlock2[0] && z == starterBlock2[1]) {
 					col[z] = 2;
-				}*/
-				if (z == 0) {
-					col[z] = 1024;
 				}
 				else
 				{
@@ -54,7 +58,7 @@ public:
 	}
 
 	void print() {
-		//system("cls");
+		system("cls");
 		for (int col = 0; col < size_x; col++)
 		{
 			for (int row = 0; row < size_y; row++) {
@@ -104,6 +108,11 @@ public:
 			for (int row = size_y - 1; row >= 0; row--) {
 				if (grid[col][row] != 0 && grid[col][row - 1] == 0) {
 					grid[col][row - 1] = grid[col][row];
+
+					if (mergeGrid[col][row] == true) {
+						mergeGrid[col][row - 1] = true;
+						mergeGrid[col][row] = false;
+					}
 					grid[col][row] = 0;
 					slideLeft(false);
 				}
@@ -127,7 +136,11 @@ public:
 			for (int row = 0; row < size_y - 1; row++) {
 				if (grid[col][row] != 0 && grid[col][row + 1] == 0) {
 					grid[col][row + 1] = grid[col][row];
-					
+
+					if (mergeGrid[col][row] == true) {
+						mergeGrid[col][row + 1] = true;
+						mergeGrid[col][row] = false;
+					}
 					grid[col][row] = 0;
 					slideRight(false);
 				}
@@ -152,6 +165,11 @@ public:
 				if (grid[col][row] != 0 && grid[col + 1][row] == 0) {
 					grid[col + 1][row] = grid[col][row];
 					grid[col][row] = 0;
+
+					if (mergeGrid[col][row] == true) {
+						mergeGrid[col+1][row] = true;
+						mergeGrid[col][row] = false;
+					}
 					slideDown(false);
 				}
 				else if (grid[col+1][row] == grid[col][row] && mergeGrid[col][row] == false && merge) { //if two blocks are the same, combine them
@@ -177,6 +195,11 @@ public:
 				if (grid[col][row] != 0 && grid[col - 1][row] == 0) {
 					grid[col - 1][row] = grid[col][row];
 					grid[col][row] = 0;
+
+					if (mergeGrid[col][row] == true) {
+						mergeGrid[col-1][row] = true;
+						mergeGrid[col][row] = false;
+					}
 					slideUp(false);
 				}
 				else if (grid[col - 1][row] == grid[col][row] && mergeGrid[col][row] == false && merge) { //if two blocks are the same, combine them
