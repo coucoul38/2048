@@ -4,26 +4,34 @@
 #include <iostream>
 #include "lib.h"
 #include <string>
+#include <conio.h>
 
-std::string readDirection(char direction) {
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
 
-    if (direction == '8' || direction == 'z') {
-        return "up";
+std::string readDirection() {
+    bool badKey = true;
+    while (badKey)
+    {
+        badKey = false;
+        int c = 0;
+        switch ((c = _getch()))
+        {
+        case KEY_UP:
+            return "up";
+        case KEY_DOWN:
+            return "down";
+        case KEY_RIGHT:
+            return "right";
+        case KEY_LEFT:
+            return "left";
+        default:
+            badKey = true;
+            break;
+        }
     }
-    else if (direction == '5' || direction == 's') {
-        return "down";
-    }
-    else if (direction == '4' || direction == 'q') {
-        return "left";
-    }
-    else if (direction == '6' || direction == 'd') {
-        return "right";
-    }
-    else if (direction == '0' || direction == 'e') {
-        std::cout << "Exiting loop\n";
-        return "exit";
-    }
-    else return "not_valid";
 }
 
 
@@ -38,18 +46,12 @@ void main()
 
     while(!exit) {
         grid->print();
-        std::cout << "ZQSD pour deplacer ou E pour sortir: ";
-        std::cin >> player_input;
-        key = readDirection(player_input);
+        std::cout << "Utilisez les touches directionelles pour déplacer les blocks";
+        key = readDirection();
         if (key == "exit") {
             exit = true;
         }
-        else if (key!="not_valid") {
-            grid->slide(key);
-            grid->addBlock();
-        }
+        exit = grid->slide(key);
+        grid->addBlock();
     }
 }
-
-// Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
-// Déboguer le programme : F5 ou menu Déboguer > Démarrer le débogage
