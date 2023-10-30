@@ -1,7 +1,5 @@
-#include <vector>
-#include <iostream>
 #include <string>
-
+#pragma once
 class Grid {
 public:
 	int size_x;
@@ -33,4 +31,3 @@ public:
 
 	~Grid();
 };
-

@@ -2,11 +2,12 @@
 //
 
 #include <iostream>
-#include "grid.h"
-#include "integration.h"
 #include <string>
 #include <conio.h>
 #include <SDL.h>
+
+#include "grid.h"
+#include "integration.h"
 
 #define KEY_UP 72
 #define KEY_DOWN 80
@@ -40,6 +41,11 @@ std::string readDirection() {
 int main(int argc, char** argv)
 {
     SDL_Init(SDL_INIT_EVERYTHING);
+    if(SDL_Init(SDL_INIT_EVERYTHING) < 0){
+        std::cout << "Error, couldn't initizialize SDL, error : " << SDL_GetError() << "\n";
+    }else{
+        std::cout << "Successfully initialized SDL\n";
+    }
     bool exit = false;
     std::cout << "Hello World!\n";
     //Grid* grid = new Grid(4,4);

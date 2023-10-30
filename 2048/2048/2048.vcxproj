@@ -137,7 +137,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="2048.cpp" />
-    <ClCompile Include="init.cpp" />
+    <ClCompile Include="defGrid.cpp" />
+    <ClCompile Include="defIntegration.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="integration.h" />

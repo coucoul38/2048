@@ -18,8 +18,11 @@
     <ClCompile Include="2048.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="init.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClCompile Include="defGrid.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="defIntegration.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,7 @@
 #include "grid.h"
+#include <vector>
+#include <iostream>
+#include <string>
 
 const char* redBG("\033[30;41m");
 const char* greenBG("\033[30;42m");
@@ -12,8 +15,13 @@ Grid::Grid(int input[4][4]) {
 	grid = (int**)malloc(sizeof(int*) * 4);
 	for (int i = 0; i < 4; i++)
 	{
-		int* col = (int*)malloc(sizeof(int) * size_y);
-		col = input[i];
+		bool* mergeCol = (bool*)malloc(sizeof(bool) * size_y);
+		for (int j = 0; j < 4; j++)
+		{
+			mergeCol[j] = false;
+		}
+		grid[i]= input[i];
+		mergeGrid[i] = mergeCol;
 	}
 }
 
