@@ -41,58 +41,56 @@ std::string readDirection() {
     }
 }
 
-void createWindow(SDL_Window* window = NULL) {
-	/* Creates a SDL window */
-	window = SDL_CreateWindow("SDL Example", /* Title of the SDL window */
-		SDL_WINDOWPOS_UNDEFINED, /* Position x of the window */
-		SDL_WINDOWPOS_UNDEFINED, /* Position y of the window */
-		WIDTH, /* Width of the window in pixels */
-		HEIGHT, /* Height of the window in pixels */
-		0); /* Additional flag(s) */
+class createWindow(SDL_Window* window = NULL) {
+
+#   
+    //Destructor
+    ~createWindow(){
+		/* Frees memory */
+		SDL_DestroyWindow(window);
+
+		/* Shuts down all SDL subsystems */
+		SDL_Quit();
+    }
 }
 
+void deleteWindow(SDL_Window* window = NULL) {
+
+    
+
+}
 
 int main(int argc, char** argv)
 {
 
     SDL_Window* window = NULL;
 
-    SDL_Init(SDL_INIT_EVERYTHING);
-    if(SDL_Init(SDL_INIT_EVERYTHING) < 0){
-        std::cout << "Error, couldn't initizialize SDL, error : " << SDL_GetError() << "\n";
-    }else{
-        std::cout << "Successfully initialized SDL\n";
-    }
-
     createWindow(window);
 
     bool exit = false;
     std::cout << "Hello World!\n";
-    //Grid* grid = new Grid(4,4);
+    Grid* grid = new Grid(4,4);
 
     char player_input;
     std::string key;
 
-    /*while (!exit) {
+    while (!exit) {
         grid->print();
-        std::cout << "Utilisez les touches directionelles pour déplacer les blocks";
+        std::cout << "Utilisez les touches directionelles pour deplacer les blocks\n";
         key = readDirection();
         if (key == "exit") {
             exit = true;
         }
-        exit = grid->slide(key);
-        grid->addBlock();
-    }*/
+        grid->slide(key);
+        exit = grid->addBlock();
+    }
 
     //INTEGRATION TEST
-    IntegrationTest* test = new IntegrationTest(1);
+    IntegrationTest* test = new IntegrationTest();
 
-
-	/* Frees memory */
-	SDL_DestroyWindow(window);
-
-	/* Shuts down all SDL subsystems */
-	SDL_Quit();
+    //Destroy window
+    deleteWindow();
+	
 
     return 0;
 }
