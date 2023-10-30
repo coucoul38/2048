@@ -38,10 +38,10 @@ bool IntegrationTest::Test1() {
 		std::cout << green << "Test1 passed\n" << "\033[0m";
 	}
 	else {
-		std::cout << red << "Test1 failed" << "\033[0m";
+		std::cout << red << "Test1 failed\n" << "\033[0m";
 	}
 
-	std::cout << "Expected result:\n";
+	std::cout << "---------------\nExpected result:\n";
 	for (int col = 0; col < 4; col++)
 	{
 		for (int row = 0; row < 4; row++) {
@@ -54,8 +54,9 @@ bool IntegrationTest::Test1() {
 		}
 		std::cout << "\n";
 	}
-	std::cout << "Actual result:\n";
+	std::cout << "\nActual result:\n";
 	grid->print();
+	std::cout << "---------------\n";
 
 	return success;
 }
