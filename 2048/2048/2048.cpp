@@ -2,9 +2,10 @@
 //
 
 #include <iostream>
-#include "lib.h"
+#include "grid.h"
 #include "integration.h"
 #include <string>
+#include <conio.h>
 #include <SDL.h>
 
 #define KEY_UP 72
@@ -36,12 +37,13 @@ std::string readDirection() {
 }
 
 
-void main()
+int main(int argc, char** argv)
 {
+    SDL_Init(SDL_INIT_EVERYTHING);
     bool exit = false;
     std::cout << "Hello World!\n";
-    Grid* grid = new Grid(4,4);
-    IntGrid* intGrid = new IntGrid(4,4);
+    //Grid* grid = new Grid(4,4);
+
     char player_input;
     std::string key;
 
@@ -57,7 +59,7 @@ void main()
     }*/
 
     //INTEGRATION TEST
-    intGrid->print();
-    intGrid->slide("down");
-    intGrid->print();
+    IntegrationTest* test = new IntegrationTest(1);
+
+    return 0;
 }
