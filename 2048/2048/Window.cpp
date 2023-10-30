@@ -1,7 +1,10 @@
+#include <iostream>
 #include "Window.h"
 #include <SDL.h>
 
-Window::Window(SDL_Window* window = NULL){
+
+
+Window::Window(int width, int height){
 	// Initialize SDL
 	SDL_Init(SDL_INIT_EVERYTHING);
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -15,13 +18,18 @@ Window::Window(SDL_Window* window = NULL){
 	window = SDL_CreateWindow("SDL Example", /* Title of the SDL window */
 		SDL_WINDOWPOS_UNDEFINED, /* Position x of the window */
 		SDL_WINDOWPOS_UNDEFINED, /* Position y of the window */
-		WIDTH, /* Width of the window in pixels */
-		HEIGHT, /* Height of the window in pixels */
+		width, /* Width of the window in pixels */
+		height, /* Height of the window in pixels */
 		0); /* Additional flag(s) */
-
 }
 
 
 Window::~Window(){
+
+	/* Frees memory */
+	SDL_DestroyWindow(window);
+
+	/* Shuts down all SDL subsystems */
+	SDL_Quit();
 
 }

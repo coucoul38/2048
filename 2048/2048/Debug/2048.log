@@ -1,29 +1,5 @@
-﻿  2048.cpp
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(44,30): error C2143: erreur de syntaxe : absence de ')' avant '*'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(44,30): error C2143: erreur de syntaxe : absence de ';' avant '*'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(44,20): error C2079: 'SDL_Window' utilise une class de 'createWindow' non défini
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(44,41): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(44,45): error C2059: erreur de syntaxe : ')'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(47,31): error C2059: erreur de syntaxe : ';'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(48,2): error C2059: erreur de syntaxe : 'if'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(48,41): error C2143: erreur de syntaxe : absence de ';' avant '{'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(48,41): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(51,2): error C2059: erreur de syntaxe : 'else'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(51,7): error C2143: erreur de syntaxe : absence de ';' avant '{'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(51,7): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(56,11): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(56,2): error C2040: 'window' : les niveaux d'indirection de 'int' et de 'int *' sont différents
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(64,6): error C2588: '::~createWindow' : destructeur global non conforme
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(64,20): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(70,5): warning C4508: 'createWindow' : la fonction doit retourner une valeur ; type de retour 'void' pris par défaut
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(71,1): error C2059: erreur de syntaxe : '}'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(71,1): error C2143: erreur de syntaxe : absence de ';' avant '}'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(73,46): error C2143: erreur de syntaxe : absence de ';' avant '{'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(73,46): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(82,15): error C2297: « * » : non valide, car l’opérande droit a le type « int * »
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(111,5): error C2143: erreur de syntaxe : absence de ')' avant 'return'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(108,2): error C3861: 'deleteWindow' : identificateur introuvable
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(111,5): error C2143: erreur de syntaxe : absence de ';' avant 'return'
-  defIntegration.cpp
-  Window.cpp
-  Génération de code en cours...
+﻿  Window.cpp
+C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Window.cpp(5,37): error C2572: 'Window::Window' : redéfinition de l'argument par défaut : paramètre 1
+C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Window.h(8,2): message : voir la déclaration de 'Window::Window'
+C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Window.cpp(19,3): error C2065: 'WIDTH' : identificateur non déclaré
+C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Window.cpp(20,3): error C2065: 'HEIGHT' : identificateur non déclaré

@@ -41,31 +41,15 @@ std::string readDirection() {
     }
 }
 
-class createWindow(SDL_Window* window = NULL) {
-
-#   
-    //Destructor
-    ~createWindow(){
-		/* Frees memory */
-		SDL_DestroyWindow(window);
-
-		/* Shuts down all SDL subsystems */
-		SDL_Quit();
-    }
-}
-
-void deleteWindow(SDL_Window* window = NULL) {
-
-    
-
-}
+   
 
 int main(int argc, char** argv)
 {
 
     SDL_Window* window = NULL;
 
-    createWindow(window);
+    //createWindow(window);
+
 
     bool exit = false;
     std::cout << "Hello World!\n";
@@ -89,7 +73,7 @@ int main(int argc, char** argv)
     IntegrationTest* test = new IntegrationTest();
 
     //Destroy window
-    deleteWindow();
+    //deleteWindow();
 	
 
     return 0;

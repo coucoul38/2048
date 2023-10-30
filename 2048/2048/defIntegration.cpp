@@ -1,3 +1,4 @@
+#include <iostream>
 #include "integration.h"
 #include "colorCodes.h"
 using namespace color;
@@ -212,6 +213,8 @@ bool IntegrationTest::Test1Down() {
 void IntegrationTest::test() {
 	Test1Left();
 	Test1Right();
+	Test1Up();
+	Test1Down();
 }
 
 IntegrationTest::~IntegrationTest()

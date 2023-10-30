@@ -1,5 +1,4 @@
 #include <string>
-#pragma once
 class Grid {
 public:
 	int size_x;
