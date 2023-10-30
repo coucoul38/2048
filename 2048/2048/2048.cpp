@@ -4,6 +4,7 @@
 #include <iostream>
 #include "lib.h"
 #include <string>
+#include <SDL.h>
 
 
 std::string readDirection(char direction) {
