@@ -88,7 +88,6 @@ bool Grid::slide(std::string direction){
 		}
 	}
 
-
 	if (direction == "up") {
 		win = slideUp(true);
 	}
@@ -101,7 +100,7 @@ bool Grid::slide(std::string direction){
 	else if (direction == "right") {
 		win = slideRight(true);
 	}
-	std::cout << "\nWin: " << win << "\n";
+	//std::cout << "\nWin: " << win << "\n";
 	return win;
 }
 

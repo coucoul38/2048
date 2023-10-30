@@ -86,8 +86,6 @@ int main(int argc, char** argv)
 
     //INTEGRATION TEST
     IntegrationTest* test = new IntegrationTest(1);
-    test->test();
-
 
 
 	/* Frees memory */

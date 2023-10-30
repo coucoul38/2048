@@ -1,2 +1,4 @@
-﻿  defIntegration.cpp
+﻿  2048.cpp
+C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(73,10): warning C4101: 'player_input' : variable locale non référencée
+C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(42): warning C4715: 'readDirection' : les chemins de contrôle ne retournent pas tous une valeur
   2048.vcxproj -> C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\Debug\2048.exe
