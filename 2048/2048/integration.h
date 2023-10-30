@@ -2,59 +2,33 @@
 #include <iostream>
 #include <string>
 
-const std::string redBG("\033[30;41m");
-const std::string greenBG("\033[30;42m");
-const std::string yellowBG("\033[30;43m");
-const std::string reset("\033[0m");
-
-class Grid {
+class IntegrationTest {
 public:
-	int size_x;
-	int size_y;
-	int** grid;
-	bool** mergeGrid; //this grid is used to know if a block resulted from a merge with another block, to prevent "cascade merge" in the same move
 
-	Grid(int input[4][4]) {
-		grid = (int**)malloc(sizeof(int*) * 4);
-		for (int col = 0; col < 4; col++)
+	void Test1() 
+	{
+		int start[4][4] = 
+		{ 
+			{2,2,2,2},
+			{0,0,0,0},
+			{0,0,0,0},
+			{0,0,0,0}
+		};
+
+		int expected[4][4] =
 		{
-			col = input[col];
-		}
-	}
+			{4,4,0,0},
+			{0,0,0,0},
+			{0,0,0,0},
+			{0,0,0,0}
+		};
 
-	Grid(int x, int y) 
-	{	
-		srand(time(NULL)); //Initialize random seed
-		size_x = x;
-		size_y = y;
+		Grid grid(start);
 
-		grid = (int**)malloc(sizeof(int*) * size_x);
-		mergeGrid = (bool**)malloc(sizeof(bool*) * size_x); //this grid is used to know if a block resulted from a merge with another block, to prevent "cascade merge" in the same move
+		grid.slideLeft(true);
 
-		int starterBlock1[] = {rand() % 4 , rand() % 4};
-		int starterBlock2[] = { rand() % 4 , rand() % 4 };
+		bool success = grid.Compare(expected);
 
-		//create the grid
-		for (int i = 0; i < size_x; i++)
-		{
-			int* col = (int*) malloc(sizeof(int) * size_y);
-			bool* mergeCol = (bool*) malloc(sizeof(bool) * size_y);
-			for (int z = 0; z < size_y; z++)
-			{	
-				if (i == starterBlock1[0] && z == starterBlock1[1]) {
-					col[z] = 2;
-				} else if (i == starterBlock2[0] && z == starterBlock2[1]) {
-					col[z] = 2;
-				}
-				else
-				{
-					col[z] = 0;
-				}
-				mergeCol[z] = false;
-			}
-			grid[i] = col;
-			mergeGrid[i] = mergeCol;
-		}
 	}
 
 	void print() {
@@ -62,12 +36,7 @@ public:
 		for (int col = 0; col < size_x; col++)
 		{
 			for (int row = 0; row < size_y; row++) {
-				if (grid[col][row] != 0) {
-					std::cout << yellowBG << grid[col][row] << reset << " "; //blocks are displayed in red
-				}
-				else {
-					std::cout << grid[col][row] << " ";
-				}
+				std::cout << grid[col][row] << " ";
 			}
 			std::cout << "\n";
 		}
@@ -103,26 +72,29 @@ public:
 
 	bool slideLeft(bool merge) {
 		bool win = false;
-		for (int col = 0; col < size_x; col++)
+		for (int i = 0; i < 2; i++)
 		{
-			for (int row = size_y - 1; row >= 0; row--) {
-				if (grid[col][row] != 0 && grid[col][row - 1] == 0) {
-					grid[col][row - 1] = grid[col][row];
+			for (int col = 0; col < size_x; col++)
+			{
+				for (int row = size_y - 1; row >= 0; row--) {
+					if (grids[i][col][row] != 0 && grid[col][row - 1] == 0) {
+						grids[i][col][row - 1] = grid[col][row];
 
-					if (mergeGrid[col][row] == true) {
-						mergeGrid[col][row - 1] = true;
-						mergeGrid[col][row] = false;
+						if (mergeGrid[col][row] == true) {
+							mergeGrid[col][row - 1] = true;
+							mergeGrid[col][row] = false;
+						}
+						grid[col][row] = 0;
+						slideLeft(false);
 					}
-					grid[col][row] = 0;
-					slideLeft(false);
-				}
-				else if (grid[col][row - 1] == grid[col][row] && mergeGrid[col][row]==false && merge) { //if two blocks are the same, combine them
-					grid[col][row - 1] += grid[col][row];
-					mergeGrid[col][row - 1] = true;
-					grid[col][row] = 0;
-					slideLeft(false);
+					else if (grid[col][row - 1] == grid[col][row] && mergeGrid[col][row] == false && merge) { //if two blocks are the same, combine them
+						grid[col][row - 1] += grid[col][row];
+						mergeGrid[col][row - 1] = true;
+						grid[col][row] = 0;
+						slideLeft(false);
 
-					if (grid[col][row - 1] == 2048) {win = true;} //win detection
+						if (grid[col][row - 1] == 2048) { win = true; } //win detection
+					}
 				}
 			}
 		}
@@ -243,15 +215,19 @@ public:
 		}
 	}
 
-	~Grid()
+	bool test() {
+		bool working = true;
+		return working;
+	}
+
+	~IntGrid()
 	{
 		std::cout << "out";
 		for (int i = 0; i < size_x; i++)
 		{
-			free(grid[i]);
 			free(mergeGrid[i]);
 		}
-		free(grid);
+		free(grids);
 		free(mergeGrid);
 	}
 };
