@@ -14,6 +14,10 @@
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
 
+// Window size
+#define WIDTH 800
+#define HEIGHT 600
+
 std::string readDirection() {
     bool badKey = true;
     while (badKey)
@@ -37,15 +41,31 @@ std::string readDirection() {
     }
 }
 
+void createWindow(SDL_Window* window = NULL) {
+	/* Creates a SDL window */
+	window = SDL_CreateWindow("SDL Example", /* Title of the SDL window */
+		SDL_WINDOWPOS_UNDEFINED, /* Position x of the window */
+		SDL_WINDOWPOS_UNDEFINED, /* Position y of the window */
+		WIDTH, /* Width of the window in pixels */
+		HEIGHT, /* Height of the window in pixels */
+		0); /* Additional flag(s) */
+}
+
 
 int main(int argc, char** argv)
 {
+
+    SDL_Window* window = NULL;
+
     SDL_Init(SDL_INIT_EVERYTHING);
     if(SDL_Init(SDL_INIT_EVERYTHING) < 0){
         std::cout << "Error, couldn't initizialize SDL, error : " << SDL_GetError() << "\n";
     }else{
         std::cout << "Successfully initialized SDL\n";
     }
+
+    createWindow(window);
+
     bool exit = false;
     std::cout << "Hello World!\n";
     //Grid* grid = new Grid(4,4);
@@ -66,6 +86,15 @@ int main(int argc, char** argv)
 
     //INTEGRATION TEST
     IntegrationTest* test = new IntegrationTest(1);
+    test->test();
+
+
+
+	/* Frees memory */
+	SDL_DestroyWindow(window);
+
+	/* Shuts down all SDL subsystems */
+	SDL_Quit();
 
     return 0;
 }

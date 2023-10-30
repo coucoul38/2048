@@ -2,11 +2,8 @@
 #include <vector>
 #include <iostream>
 #include <string>
-
-const char* redBG("\033[30;41m");
-const char* greenBG("\033[30;42m");
-const char* yellowBG("\033[30;43m");
-const char* reset("\033[0m");
+#include "colorCodes.h"
+using namespace color;
 
 Grid::Grid(int input[4][4]) {
 	size_x = 4;
@@ -64,7 +61,7 @@ Grid::Grid(int x, int y) {
 
 void Grid::print() {
 	{
-		system("cls");
+		//system("cls");
 		for (int col = 0; col < size_x; col++)
 		{
 			for (int row = 0; row < size_y; row++) {

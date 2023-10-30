@@ -137,6 +137,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="2048.cpp" />
+    <ClCompile Include="colorCodes.cpp" />
+    <ClCompile Include="colorCodes.h" />
     <ClCompile Include="defGrid.cpp" />
     <ClCompile Include="defIntegration.cpp" />
   </ItemGroup>
