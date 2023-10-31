@@ -16,11 +16,9 @@ int GameObject::Blit() {
 	dest.x = 100;
 	dest.y = 100;
 
-	int result = SDL_BlitSurface(winSurface,NULL, winSurface, &dest);
+	SDL_BlitSurface(image, NULL, winSurface, &dest);
 	SDL_UpdateWindowSurface(window);
-	if (result < 0) {
-		return true;
-	}
+	
 	return false;
 }
 

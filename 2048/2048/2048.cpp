@@ -44,12 +44,18 @@ int main(int argc, char** argv)
     Window* windowEntity = new Window(1280,720);
 
     //LOAD IMAGES
-    SDL_Surface* image = SDL_LoadBMP("Assets/Images/image.bmp");
+    SDL_Surface* image = SDL_LoadBMP("../Assets/Images/image.bmp");
 
     GameObject* gameObject = new GameObject(windowEntity->GetWindow(), image);
     if (gameObject->Blit()) {
         std::cout << "Error while blitting bitmap\n";
     }
+
+    /*SDL_Rect dest;
+    dest.x = 10;
+    dest.y = 10;
+
+    SDL_BlitSurface(image, NULL, SDL_GetWindowSurface(windowEntity->GetWindow()), NULL);*/
 
     bool exit = false;
     std::cout << "Hello World!\n";

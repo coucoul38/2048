@@ -1,2 +1,4 @@
-﻿  GameObject.cpp
+﻿  2048.cpp
+C:\Users\ncoulon\Documents\GitHub\2048\2048\2048\2048.cpp(64,10): warning C4101: 'player_input' : variable locale non référencée
+C:\Users\ncoulon\Documents\GitHub\2048\2048\2048\2048.cpp(37): warning C4715: 'readDirection' : les chemins de contrôle ne retournent pas tous une valeur
   2048.vcxproj -> C:\Users\ncoulon\Documents\GitHub\2048\2048\Debug\2048.exe
