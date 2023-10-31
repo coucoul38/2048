@@ -51,12 +51,6 @@ int main(int argc, char** argv)
         std::cout << "Error while blitting bitmap\n";
     }
 
-    /*SDL_Rect dest;
-    dest.x = 10;
-    dest.y = 10;
-
-    SDL_BlitSurface(image, NULL, SDL_GetWindowSurface(windowEntity->GetWindow()), NULL);*/
-
     bool exit = false;
     std::cout << "Hello World!\n";
     Grid* grid = new Grid(4,4);
