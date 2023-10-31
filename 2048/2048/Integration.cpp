@@ -1,8 +1,7 @@
 #include <iostream>
-#include "integration.h"
+#include "Integration.h"
 #include "colorCodes.h"
 using namespace color;
-
 
 IntegrationTest::IntegrationTest() {
 	this->test();

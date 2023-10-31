@@ -1,22 +1,17 @@
-// 2048.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
-//
-
 #include <iostream>
 #include <string>
 #include <conio.h>
 #include <SDL.h>
 
-#include "grid.h"
-#include "integration.h"
+#include "Grid.h"
+#include "Integration.h"
+#include "Window.h"
+#include "GameObject.h"
 
 #define KEY_UP 72
 #define KEY_DOWN 80
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
-
-// Window size
-#define WIDTH 800
-#define HEIGHT 600
 
 std::string readDirection() {
     bool badKey = true;
@@ -46,10 +41,15 @@ std::string readDirection() {
 int main(int argc, char** argv)
 {
 
-    SDL_Window* window = NULL;
+    Window* windowEntity = new Window(1280,720);
 
-    //createWindow(window);
+    //LOAD IMAGES
+    SDL_Surface* image = SDL_LoadBMP("Assets/Images/image.bmp");
 
+    GameObject* gameObject = new GameObject(windowEntity->GetWindow(), image);
+    if (gameObject->Blit()) {
+        std::cout << "Error while blitting bitmap\n";
+    }
 
     bool exit = false;
     std::cout << "Hello World!\n";
@@ -70,10 +70,10 @@ int main(int argc, char** argv)
     }
 
     //INTEGRATION TEST
-    IntegrationTest* test = new IntegrationTest();
+    //IntegrationTest* test = new IntegrationTest();
 
-    //Destroy window
-    //deleteWindow();
+    delete windowEntity;
+    delete gameObject;
 	
 
     return 0;

@@ -2,8 +2,6 @@
 #include "Window.h"
 #include <SDL.h>
 
-
-
 Window::Window(int width, int height){
 	// Initialize SDL
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -23,6 +21,9 @@ Window::Window(int width, int height){
 		0); /* Additional flag(s) */
 }
 
+SDL_Window* Window::GetWindow() {
+	return window;
+}
 
 Window::~Window(){
 
@@ -31,5 +32,4 @@ Window::~Window(){
 
 	/* Shuts down all SDL subsystems */
 	SDL_Quit();
-
 }

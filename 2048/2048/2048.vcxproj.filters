@@ -18,10 +18,10 @@
     <ClCompile Include="2048.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="defGrid.cpp">
+    <ClCompile Include="Grid.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="defIntegration.cpp">
+    <ClCompile Include="Integration.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="colorCodes.h">
@@ -33,15 +33,21 @@
     <ClCompile Include="Window.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="grid.h">
+    <ClInclude Include="Grid.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="integration.h">
+    <ClInclude Include="Integration.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

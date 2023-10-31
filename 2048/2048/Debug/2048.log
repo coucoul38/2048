@@ -1,5 +1,2 @@
-﻿  Window.cpp
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Window.cpp(5,37): error C2572: 'Window::Window' : redéfinition de l'argument par défaut : paramètre 1
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Window.h(8,2): message : voir la déclaration de 'Window::Window'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Window.cpp(19,3): error C2065: 'WIDTH' : identificateur non déclaré
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Window.cpp(20,3): error C2065: 'HEIGHT' : identificateur non déclaré
+﻿  GameObject.cpp
+  2048.vcxproj -> C:\Users\ncoulon\Documents\GitHub\2048\2048\Debug\2048.exe
