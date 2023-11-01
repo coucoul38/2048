@@ -3,19 +3,23 @@
 #include <iostream>
 #include <string>
 #include "colorCodes.h"
+//#include "Block.h"
 using namespace color;
 
 Grid::Grid(int input[4][4]) {
 	size_x = 4;
 	size_y = 4;
-	mergeGrid = (bool**)malloc(sizeof(bool*) * size_x); //this grid is used to know if a block resulted from a merge with another block, to prevent "cascade merge" in the same move
+	mergeGrid = (bool**)malloc(sizeof(bool*) * 4); //this grid is used to know if a block resulted from a merge with another block, to prevent "cascade merge" in the same move
 	grid = (int**)malloc(sizeof(int*) * 4);
+	//visGrid = (Block**)malloc(sizeof(Block*) * size_x)
 	for (int i = 0; i < 4; i++)
 	{
 		bool* mergeCol = (bool*)malloc(sizeof(bool) * size_y);
+		//Block* visCol = (Block*)malloc(sizeof(Block) * size_y);
 		for (int j = 0; j < 4; j++)
 		{
 			mergeCol[j] = false;
+			//visCol[j] = new Block();
 		}
 		grid[i]= input[i];
 		mergeGrid[i] = mergeCol;

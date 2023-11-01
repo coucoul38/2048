@@ -1,10 +1,12 @@
 #include <string>
 #pragma once
+struct Block;
 class Grid {
 public:
 	int size_x;
 	int size_y;
 	int** grid;
+	//Block** visGrid;
 	bool** mergeGrid; //this grid is used to know if a block resulted from a merge with another block, to prevent "cascade merge" in the same move
 
 	Grid(int input[4][4]);

@@ -1,4 +1,8 @@
 ﻿  2048.cpp
-C:\Users\ncoulon\Documents\GitHub\2048\2048\2048\2048.cpp(64,10): warning C4101: 'player_input' : variable locale non référencée
-C:\Users\ncoulon\Documents\GitHub\2048\2048\2048\2048.cpp(37): warning C4715: 'readDirection' : les chemins de contrôle ne retournent pas tous une valeur
-  2048.vcxproj -> C:\Users\ncoulon\Documents\GitHub\2048\2048\Debug\2048.exe
+C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(58,10): warning C4101: 'player_input' : variable locale non référencée
+  Block.cpp
+  Window.cpp
+  Génération de code en cours...
+C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(37): warning C4715: 'readDirection' : les chemins de contrôle ne retournent pas tous une valeur
+Debug\colorCodes.obj : warning LNK4042: objet spécifié plus d'une fois ; définitions supplémentaires ignorées
+  2048.vcxproj -> C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\Debug\2048.exe

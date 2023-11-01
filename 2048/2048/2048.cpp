@@ -6,7 +6,7 @@
 #include "Grid.h"
 #include "Integration.h"
 #include "Window.h"
-#include "GameObject.h"
+#include "Block.h"
 
 #define KEY_UP 72
 #define KEY_DOWN 80
@@ -36,24 +36,60 @@ std::string readDirection() {
     }
 }
 
+SDL_Texture* loadImage(const char path[], SDL_Renderer* renderer) {
+    SDL_Surface* tmp = NULL;
+    SDL_Texture* texture = NULL;
+
+    tmp = SDL_LoadBMP(path);
+    if (tmp == NULL) {
+        std::cout << "Error LoadBMP: " << SDL_GetError();
+        return NULL;
+    }
+
+    texture = SDL_CreateTextureFromSurface(renderer, tmp);
+    SDL_FreeSurface(tmp);
+    if (texture == NULL) {
+        std::cout << "Error CreateTextureFromSurface: " << SDL_GetError();
+        return NULL;
+    }
+    return texture;
+}
+
    
 
 int main(int argc, char** argv)
 {
 
     Window* windowEntity = new Window(1280,720);
+    SDL_Renderer* renderer = windowEntity->GetRenderer();
+    SDL_Window* window = windowEntity->GetWindow();
 
     //LOAD IMAGES
-    SDL_Surface* image = SDL_LoadBMP("../Assets/Images/image.bmp");
-
-    GameObject* gameObject = new GameObject(windowEntity->GetWindow(), image);
-    if (gameObject->Blit()) {
-        std::cout << "Error while blitting bitmap\n";
-    }
+    /*SDL_Surface* image = SDL_LoadBMP("../Assets/Images/image.bmp");
+    if (image == NULL) {
+        std::cout << "Error loading image: " << SDL_GetError();
+        exit(1);
+    }*/
+    SDL_Texture* IMGblockEmpty = loadImage("../Assets/Images/image.bmp", renderer);
 
     bool exit = false;
     std::cout << "Hello World!\n";
-    Grid* grid = new Grid(4,4);
+    int size_x = 4;
+    int size_y = 4;
+    Grid* grid = new Grid(size_x, size_y);
+
+    //Visual grid creation
+    Block** blockGrid = (Block**)malloc(sizeof(Block*) * size_x);
+    for (int i = 0; i < size_x; i++)
+    {
+        Block* blockCol = (Block*)malloc(sizeof(Block) * size_y);
+        for (int z = 0; z < size_y; z++)
+        {
+            Block* block = new Block(window, IMGblockEmpty, renderer);
+            blockCol[z] = block;
+        }
+        blockGrid[i] = blockCol;
+    }
 
     char player_input;
     std::string key;
@@ -73,7 +109,7 @@ int main(int argc, char** argv)
     //IntegrationTest* test = new IntegrationTest();
 
     delete windowEntity;
-    delete gameObject;
+    delete block;
 	
 
     return 0;

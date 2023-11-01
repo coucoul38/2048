@@ -139,13 +139,13 @@
     <ClCompile Include="2048.cpp" />
     <ClCompile Include="colorCodes.cpp" />
     <ClCompile Include="colorCodes.h" />
-    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Block.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Integration.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Block.h" />
     <ClInclude Include="Integration.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Window.h" />
