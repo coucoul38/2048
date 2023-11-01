@@ -1,2 +1,6 @@
-﻿  Block.cpp
+﻿  2048.cpp
+C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Block.h(8,1): warning C4099: 'Block' : nom de type déjà rencontré avec 'struct' et utilisant maintenant 'class'
+C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Block.h(7,7): message : voir la déclaration de 'Block'
+C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(94,10): warning C4101: 'player_input' : variable locale non référencée
+C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(37): warning C4715: 'readDirection' : les chemins de contrôle ne retournent pas tous une valeur
   2048.vcxproj -> C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\Debug\2048.exe

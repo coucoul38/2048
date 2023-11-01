@@ -3,8 +3,8 @@
 #include <SDL.h>
 
 Block::Block(SDL_Window* window, SDL_Texture* texture, SDL_Renderer* renderer) {
-	m_pos.x = 10;
-	m_pos.y = 10;
+	m_pos.x = 0;
+	m_pos.y = 0;
 	m_renderer = renderer;
 	m_texture = texture;
 	m_window = window;

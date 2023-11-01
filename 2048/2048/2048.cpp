@@ -67,15 +67,12 @@ int main(int argc, char** argv)
 
     //LOAD IMAGES
     SDL_Texture* IMGblockEmpty = loadImage("../Assets/Images/image.bmp", renderer);
-    /*SDL_RenderCopy(renderer, IMGblockEmpty, NULL, NULL);
-    SDL_RenderPresent(renderer);
-    SDL_Delay(5000);*/
 
-    //bool exit = false;
-    //std::cout << "Hello World!\n";
-    //int size_x = 4;
-    //int size_y = 4;
-    //Grid* grid = new Grid(size_x, size_y);
+    bool exit = false;
+    std::cout << "Hello World!\n";
+    int size_x = 4;
+    int size_y = 4;
+    Grid* grid = new Grid(size_x, size_y);
 
     ////Visual grid creation
     ///*for (int i = 0; i < size_x; i++)
@@ -90,35 +87,35 @@ int main(int argc, char** argv)
     //}*/
 
     Block* block = new Block(window, IMGblockEmpty, renderer);
-    block->Move(100, 100);
+    //block->Move(100, 100);
     block->Draw();
     SDL_Delay(5000);
 
-    //char player_input;
-    //std::string key;
+    char player_input;
+    std::string key;
 
-    //
-    //while (!exit) {
-    //    grid->print();
-    //    std::cout << "Utilisez les touches directionelles pour deplacer les blocks\n";
-    //    key = readDirection();
-    //    if (key == "exit") {
-    //        exit = true;
-    //    }
-    //    grid->slide(key);
-    //    block->Draw();
-    //    exit = grid->addBlock();
-    //}
+    
+    while (!exit) {
+        grid->print();
+        std::cout << "utilisez les touches directionelles pour deplacer les blocks\n";
+        key = readDirection();
+        if (key == "exit") {
+            exit = true;
+        }
+        grid->slide(key);
+        block->Draw();
+        exit = grid->addBlock();
+    }
 
     //INTEGRATION TEST
     //IntegrationTest* test = new IntegrationTest();
 
     delete windowEntity;
-    //for (int i = 0; i < size_x; i++)
-    //{
-    //    free(blockGrid[i])
-    //}
-    //free(blockGrid);
+    /*for (int i = 0; i < size_x; i++)
+    {
+        free(blockGrid[i])
+    }
+    free(blockGrid);*/
 
     return 0;
 }
