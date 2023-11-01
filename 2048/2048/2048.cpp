@@ -40,6 +40,7 @@ SDL_Texture* loadImage(const char path[], SDL_Renderer* renderer) {
     SDL_Surface* tmp = NULL;
     SDL_Texture* texture = NULL;
 
+    std::cout << "Path: " << path << "\n";
     tmp = SDL_LoadBMP(path);
     if (tmp == NULL) {
         std::cout << "Error LoadBMP: " << SDL_GetError();
@@ -65,52 +66,59 @@ int main(int argc, char** argv)
     SDL_Window* window = windowEntity->GetWindow();
 
     //LOAD IMAGES
-    /*SDL_Surface* image = SDL_LoadBMP("../Assets/Images/image.bmp");
-    if (image == NULL) {
-        std::cout << "Error loading image: " << SDL_GetError();
-        exit(1);
-    }*/
     SDL_Texture* IMGblockEmpty = loadImage("../Assets/Images/image.bmp", renderer);
+    /*SDL_RenderCopy(renderer, IMGblockEmpty, NULL, NULL);
+    SDL_RenderPresent(renderer);
+    SDL_Delay(5000);*/
 
-    bool exit = false;
-    std::cout << "Hello World!\n";
-    int size_x = 4;
-    int size_y = 4;
-    Grid* grid = new Grid(size_x, size_y);
+    //bool exit = false;
+    //std::cout << "Hello World!\n";
+    //int size_x = 4;
+    //int size_y = 4;
+    //Grid* grid = new Grid(size_x, size_y);
 
-    //Visual grid creation
-    Block** blockGrid = (Block**)malloc(sizeof(Block*) * size_x);
-    for (int i = 0; i < size_x; i++)
-    {
-        Block* blockCol = (Block*)malloc(sizeof(Block) * size_y);
-        for (int z = 0; z < size_y; z++)
-        {
-            Block* block = new Block(window, IMGblockEmpty, renderer);
-            blockCol[z] = block;
-        }
-        blockGrid[i] = blockCol;
-    }
+    ////Visual grid creation
+    ///*for (int i = 0; i < size_x; i++)
+    //{
+    //    Block* blockCol = (Block*)malloc(sizeof(Block) * size_y);
+    //    for (int z = 0; z < size_y; z++)
+    //    {
+    //        Block* block = new Block(window, IMGblockEmpty, renderer);
+    //        blockCol[z] = block;
+    //    }
+    //    blockGrid[i] = blockCol;
+    //}*/
 
-    char player_input;
-    std::string key;
+    Block* block = new Block(window, IMGblockEmpty, renderer);
+    block->Move(100, 100);
+    block->Draw();
+    SDL_Delay(5000);
 
-    while (!exit) {
-        grid->print();
-        std::cout << "Utilisez les touches directionelles pour deplacer les blocks\n";
-        key = readDirection();
-        if (key == "exit") {
-            exit = true;
-        }
-        grid->slide(key);
-        exit = grid->addBlock();
-    }
+    //char player_input;
+    //std::string key;
+
+    //
+    //while (!exit) {
+    //    grid->print();
+    //    std::cout << "Utilisez les touches directionelles pour deplacer les blocks\n";
+    //    key = readDirection();
+    //    if (key == "exit") {
+    //        exit = true;
+    //    }
+    //    grid->slide(key);
+    //    block->Draw();
+    //    exit = grid->addBlock();
+    //}
 
     //INTEGRATION TEST
     //IntegrationTest* test = new IntegrationTest();
 
     delete windowEntity;
-    delete block;
-	
+    //for (int i = 0; i < size_x; i++)
+    //{
+    //    free(blockGrid[i])
+    //}
+    //free(blockGrid);
 
     return 0;
 }
