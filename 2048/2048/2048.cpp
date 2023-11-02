@@ -87,7 +87,7 @@ int main(int argc, char** argv)
     SDL_Event event;
 
     // CHANGE TO TRUE TO MAKE INTERGRATION TEST
-    bool integration = false; 
+    bool integration = true; 
     ///////////////////////////////////////////
 
     if(!integration){

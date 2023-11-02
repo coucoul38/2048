@@ -96,11 +96,11 @@ int Block::Draw(int value) {
 	if (value != 0) {
 		SDL_Surface* surfaceMessage = TTF_RenderText_Blended(font, charText, color);
 		SDL_Texture* Message = SDL_CreateTextureFromSurface(m_renderer, surfaceMessage);
-		SDL_Rect smaller_rect;
+		/*SDL_Rect smaller_rect;
 		smaller_rect.x = m_pos.x + m_pos.h/ 4;
 		smaller_rect.y = m_pos.y + m_pos.h/ 4;
 		smaller_rect.h = m_pos.h / 2;
-		smaller_rect.w = m_pos.h / 2;
+		smaller_rect.w = m_pos.h / 2;*/
 		SDL_RenderCopy(m_renderer, Message, NULL, &m_pos);
 		SDL_FreeSurface(surfaceMessage);
 		SDL_DestroyTexture(Message);
