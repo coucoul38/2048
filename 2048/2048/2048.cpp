@@ -95,25 +95,36 @@ int main(int argc, char** argv)
     char player_input;
     std::string key;
 
-
-    /*while (!exit) {
-        grid->print();
-        std::cout << "utilisez les touches directionelles pour deplacer les blocks\n";
-        key = readDirection();
-        if (key == "exit") {
-            exit = true;
-        }
-        grid->slide(key);
-        block->ChangeImg(IMGblock2);
-        block->Move(100, 100);
-        block->Draw();
-        exit = grid->addBlock();
-    }*/
-
     SDL_Event event;
-    bool integration = true;
+
+    // CHANGE TO TRUE TO MAKE INTERGRATION TEST
+    bool integration = false; 
+    ///////////////////////////////////////////
 
     if(!integration){
+        //Start menu
+        int choice = 1;
+        SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
+        SDL_RenderClear(renderer);
+        while(SDL_PollEvent(&event) || choice==0) {
+            //Background
+            
+            switch (event.type)
+            {
+            case SDL_KEYDOWN:
+                break;
+            case SDL_QUIT:
+                choice = -1;
+                break;
+            default:
+                break;
+            }
+        }
+
+
+        SDL_SetRenderDrawColor(renderer, 46, 46, 54, 255);
+        SDL_RenderClear(renderer);
+        grid->print();
         while (SDL_PollEvent(&event) || !exit) {
             /* We are only worried about SDL_KEYDOWN and SDL_KEYUP events */
             switch (event.type) {
@@ -121,28 +132,28 @@ int main(int argc, char** argv)
                 switch (event.key.keysym.sym) {
                 case SDLK_LEFT:
                     //clear canvas
-                    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                    SDL_SetRenderDrawColor(renderer, 46, 46, 54, 255);
                     SDL_RenderClear(renderer);
                     grid->slide("left");
                     exit = grid->addBlock();
                     grid->print();
                     break;
                 case SDLK_RIGHT:
-                    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                    SDL_SetRenderDrawColor(renderer, 46, 46, 54, 255);
                     SDL_RenderClear(renderer);
                     grid->slide("right");
                     exit = grid->addBlock();
                     grid->print();
                     break;
                 case SDLK_UP:
-                    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                    SDL_SetRenderDrawColor(renderer, 46, 46, 54, 255);
                     SDL_RenderClear(renderer);
                     grid->slide("up");
                     exit = grid->addBlock();
                     grid->print();
                     break;
                 case SDLK_DOWN:
-                    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                    SDL_SetRenderDrawColor(renderer, 46, 46, 54, 255);
                     SDL_RenderClear(renderer);
                     grid->slide("down");
                     exit = grid->addBlock();

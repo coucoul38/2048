@@ -30,7 +30,10 @@ Grid::Grid(int x, int y, SDL_Window* window, SDL_Texture* IMGblockEmpty, SDL_Ren
 		srand(time(NULL)); //Initialize random seed
 		size_x = x;
 		size_y = y;
-		int size_grid = size_x + size_y;
+		int window_w = NULL;
+		int window_h = NULL;
+		SDL_GetWindowSize(window, &window_w, &window_h);
+		int size_block = std::min(window_w, window_h)/std::max(size_x,size_y);
 
 		grid = (int**)malloc(sizeof(int*) * size_x);
 		mergeGrid = (bool**)malloc(sizeof(bool*) * size_x); //this grid is used to know if a block resulted from a merge with another block, to prevent "cascade merge" in the same move
@@ -44,7 +47,7 @@ Grid::Grid(int x, int y, SDL_Window* window, SDL_Texture* IMGblockEmpty, SDL_Ren
 		{
 			int* col = (int*)malloc(sizeof(int) * size_y);
 			bool* mergeCol = (bool*)malloc(sizeof(bool) * size_y);
-			Block** visualCol = (Block**)malloc(sizeof(Block) * size_y);
+			Block** visualCol = (Block**)malloc(sizeof(Block) * size_x);
 			for (int z = 0; z < size_y; z++)
 			{
 				if (i == starterBlock1[0] && z == starterBlock1[1]) {
@@ -57,7 +60,7 @@ Grid::Grid(int x, int y, SDL_Window* window, SDL_Texture* IMGblockEmpty, SDL_Ren
 				{
 					col[z] = 0;
 				}
-				visualCol[z] = new Block(window, IMGblockEmpty, renderer, i * size_grid* 12, z * size_grid * 12, size_grid );
+				visualCol[z] = new Block(window, IMGblockEmpty, renderer, (i* size_block), (z * size_block), size_block);
 				mergeCol[z] = false;
 			}
 			grid[i] = col;
@@ -162,7 +165,7 @@ bool Grid::slideRight() {
 }
 bool Grid::slideDown() {
 	bool win = false;
-	for (int col = size_x - 1; col >= 1; col--)
+	for (int col = size_x - 1; col > 0; col--)
 	{
 		for (int row = 0; row < size_y; row++) {
 			//std::cout << "\n Col: " << col << " Row: " << row;
@@ -185,19 +188,19 @@ bool Grid::slideDown() {
 }
 bool Grid::slideUp(){
 	bool win = false;
-	for (int col = 0; col < size_x-1; col++)
+	for (int col = 1; col < size_x; col++)
 	{
-		for (int row = 0; row < size_y; row++) {
+		for (int row = 0; row < size_x; row++) {
 			//std::cout << "\n Col: " << col << " Row: " << row;
-			if (grid[col + 1][row] != 0 && grid[col][row] == 0) {
-				grid[col][row] = grid[col + 1][row];
-				grid[col + 1][row] = 0;
+			if (grid[col][row] != 0 && grid[col - 1][row] == 0) {
+				grid[col - 1][row] = grid[col][row];
+				grid[col][row] = 0;
 				slideUp();
 			}
-			else if (grid[col][row] == grid[col + 1][row] && mergeGrid[col + 1][row] == false && mergeGrid[col][row] == false) { //if two blocks are the same, combine them
-				grid[col][row] += grid[col + 1][row];
-				mergeGrid[col][row] = true;
-				grid[col + 1][row] = 0;
+			else if (grid[col - 1][row] == grid[col][row] && mergeGrid[col][row] == false && mergeGrid[col - 1][row] == false) { //if two blocks are the same, combine them
+				grid[col - 1][row] += grid[col][row];
+				mergeGrid[col - 1][row] = true;
+				grid[col][row] = 0;
 				slideUp();
 
 				if (grid[col][row] == 2048) { win = true; } //win detection

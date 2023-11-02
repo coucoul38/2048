@@ -4,7 +4,7 @@
 #include <SDL_ttf.h>
 #include <string>
 
-Block::Block(SDL_Window* window, SDL_Texture* texture, SDL_Renderer* renderer, int x, int y, int size_grid) {
+Block::Block(SDL_Window* window, SDL_Texture* texture, SDL_Renderer* renderer, int x, int y, int size_block) {
 	m_pos.x = x;
 	m_pos.y = y;
 
@@ -13,11 +13,13 @@ Block::Block(SDL_Window* window, SDL_Texture* texture, SDL_Renderer* renderer, i
 	m_window = window;
 	int window_h;
 	int window_w;
-	SDL_QueryTexture(m_texture, NULL, NULL, &m_pos.w, &m_pos.h);
+	m_pos.h = size_block;
+	m_pos.w = size_block;
+	//SDL_QueryTexture(m_texture, NULL, NULL, &m_pos.w, &m_pos.h);
 	SDL_GetWindowSize(window, &window_w, &window_h);
 
-	m_pos.h = std::min(window_w, window_h) / size_grid;
-	m_pos.w = std::min(window_w, window_h) / size_grid;
+	/*m_pos.h = std::min(window_w, window_h) / size_grid;
+	m_pos.w = std::min(window_w, window_h) / size_grid;*/
 
 	if (TTF_Init() == -1) {
 		fprintf(stderr, "TTF_Init error : %s\n", TTF_GetError());
@@ -30,8 +32,8 @@ Block::Block(SDL_Window* window, SDL_Texture* texture, SDL_Renderer* renderer, i
 }
 
 int Block::Draw(int value) {
-	std::string textValue = std::to_string(value);
-	const char* cstr = textValue.c_str();
+	std::string stringText = std::to_string(value);
+	const char* charText = stringText.c_str();
 	SDL_Color color = { 0,0,0 };
 
 	switch (value)
@@ -95,7 +97,7 @@ int Block::Draw(int value) {
 
 	//Generate number
 	if (value != 0) {
-		SDL_Surface* surfaceMessage = TTF_RenderText_Blended(font, cstr, color);
+		SDL_Surface* surfaceMessage = TTF_RenderText_Blended(font, charText, color);
 		SDL_Texture* Message = SDL_CreateTextureFromSurface(m_renderer, surfaceMessage);
 		SDL_RenderCopy(m_renderer, Message, NULL, &m_pos);
 		SDL_FreeSurface(surfaceMessage);
