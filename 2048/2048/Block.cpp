@@ -29,12 +29,6 @@ Block::Block(SDL_Window* window, SDL_Texture* texture, SDL_Renderer* renderer, i
 	}
 }
 
-int Block::Reset() {
-	SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
-	SDL_RenderCopy(m_renderer, m_texture, NULL, &m_pos);
-	return 0;
-}
-
 int Block::Draw(int value) {
 	std::string textValue = std::to_string(value);
 	const char* cstr = textValue.c_str();

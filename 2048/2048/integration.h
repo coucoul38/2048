@@ -11,8 +11,11 @@ public:
 	bool Test1Right();
 	bool Test1Up();
 	bool Test1Down();
-	bool Test2Up();
+	
+	bool Test2Left();
 	bool Test2Right();
+	bool Test2Up();
+	bool Test2Down();
 
 	void test();
 

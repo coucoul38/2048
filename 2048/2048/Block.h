@@ -17,8 +17,6 @@ public:
 
 	Block(SDL_Window* window, SDL_Texture* texture, SDL_Renderer* renderer, int x, int y, int size_grid);
 
-	int Reset();
-
 	int Draw(int value);
 
 	void ChangeImg(SDL_Texture* texture);

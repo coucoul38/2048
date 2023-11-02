@@ -112,6 +112,7 @@ int main(int argc, char** argv)
 
     SDL_Event event;
     bool integration = true;
+
     if(!integration){
         while (SDL_PollEvent(&event) || !exit) {
             /* We are only worried about SDL_KEYDOWN and SDL_KEYUP events */
@@ -122,28 +123,30 @@ int main(int argc, char** argv)
                     //clear canvas
                     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
                     SDL_RenderClear(renderer);
-                    //render blocks
                     grid->slide("left");
-                    grid->print();
-                    //block->ChangeImg(IMGblock2);
-                    //block->Move(100, 100);
-                    //block->Draw();
                     exit = grid->addBlock();
+                    grid->print();
                     break;
                 case SDLK_RIGHT:
+                    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                    SDL_RenderClear(renderer);
                     grid->slide("right");
-                    grid->print();
                     exit = grid->addBlock();
+                    grid->print();
                     break;
                 case SDLK_UP:
+                    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                    SDL_RenderClear(renderer);
                     grid->slide("up");
-                    grid->print();
                     exit = grid->addBlock();
+                    grid->print();
                     break;
                 case SDLK_DOWN:
+                    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                    SDL_RenderClear(renderer);
                     grid->slide("down");
-                    grid->print();
                     exit = grid->addBlock();
+                    grid->print();
                     break;
                 default:
                     break;
