@@ -1,6 +1,10 @@
 #include <string>
 #pragma once
 struct Block;
+struct SDL_Window;
+struct SDL_Texture;
+struct SDL_Renderer;
+
 class Grid {
 public:
 	int size_x;
@@ -8,10 +12,11 @@ public:
 	int** grid;
 	//Block** visGrid;
 	bool** mergeGrid; //this grid is used to know if a block resulted from a merge with another block, to prevent "cascade merge" in the same move
+	Block*** visualGrid;
 
 	Grid(int input[4][4]);
 
-	Grid(int x, int y);
+	Grid(int x, int y, SDL_Window* window, SDL_Texture* IMGblockEmpty, SDL_Renderer* renderer);
 	
 	//Methods
 	void print();

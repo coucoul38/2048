@@ -11,6 +11,8 @@ public:
 	bool Test1Right();
 	bool Test1Up();
 	bool Test1Down();
+	bool Test2Up();
+	bool Test2Right();
 
 	void test();
 

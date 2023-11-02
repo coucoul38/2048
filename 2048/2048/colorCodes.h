@@ -1,10 +1,12 @@
-//#pragma once
+#pragma once
 
-namespace color {
-	extern const char* redBG;
-	extern const char* greenBG;
-	extern const char* yellowBG;
-	extern const char* reset;
-	extern const char* red;
-	extern const char* green;
-}
+class color
+{
+public:
+	static const char* redBG;
+	static const char* greenBG;
+	static const char* yellowBG;
+	static const char* reset;
+	static const char* red;
+	static const char* green;
+};
