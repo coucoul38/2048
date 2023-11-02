@@ -63,7 +63,7 @@ SDL_Texture* loadImage(const char path[], SDL_Renderer* renderer) {
 
 int main(int argc, char** argv)
 {
-    int window_w = 1280;
+    int window_w = 720;
     int window_h = 720;
 
     Window* windowEntity = new Window(window_w, window_h);
@@ -80,17 +80,6 @@ int main(int argc, char** argv)
     int size_x = 4;
     int size_y = 4;
     Grid* grid = new Grid(size_x, size_y, window, IMGblockEmpty, renderer);
-
-    /*for (int i = 0; i < size_x; i++)
-    {
-        for (int p = 0; p < size_y; p++) {
-            Block* block = new Block(window, IMGblockEmpty, renderer, i*15, p*15, 20, 20);
-            block->Draw();
-        }
-    }*/
-
-    //block->Move(100, 100);
-
 
     char player_input;
     std::string key;

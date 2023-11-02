@@ -1,19 +1,2 @@
-﻿  2048.cpp
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Block.h(10,1): warning C4099: 'Block' : nom de type déjà rencontré avec 'struct' et utilisant maintenant 'class'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Block.h(9,7): message : voir la déclaration de 'Block'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(95,10): warning C4101: 'player_input' : variable locale non référencée
-  Button.cpp
-  colorCodes.cpp
-  colorCodes.h
-  Block.cpp
-  Grid.cpp
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Block.h(10,1): warning C4099: 'Block' : nom de type déjà rencontré avec 'struct' et utilisant maintenant 'class'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Block.h(9,7): message : voir la déclaration de 'Block'
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Grid.cpp(30,13): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-  Integration.cpp
-  Window.cpp
-  Génération de code en cours...
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Grid.cpp(239): warning C4715: 'Grid::addBlock' : les chemins de contrôle ne retournent pas tous une valeur
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\2048.cpp(40): warning C4715: 'readDirection' : les chemins de contrôle ne retournent pas tous une valeur
-Debug\colorCodes.obj : warning LNK4042: objet spécifié plus d'une fois ; définitions supplémentaires ignorées
+﻿  Block.cpp
   2048.vcxproj -> C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\Debug\2048.exe

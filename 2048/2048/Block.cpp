@@ -18,14 +18,11 @@ Block::Block(SDL_Window* window, SDL_Texture* texture, SDL_Renderer* renderer, i
 	//SDL_QueryTexture(m_texture, NULL, NULL, &m_pos.w, &m_pos.h);
 	SDL_GetWindowSize(window, &window_w, &window_h);
 
-	/*m_pos.h = std::min(window_w, window_h) / size_grid;
-	m_pos.w = std::min(window_w, window_h) / size_grid;*/
-
 	if (TTF_Init() == -1) {
 		fprintf(stderr, "TTF_Init error : %s\n", TTF_GetError());
 		exit(EXIT_FAILURE);
 	}
-	font = TTF_OpenFont("../Assets/Fonts/Poppins.ttf", 24);
+	font = TTF_OpenFont("../Assets/Fonts/Poppins.ttf", 720);
 	if (font == 0) {
 		std::cout << "Error while importing font\n";
 	}
@@ -99,6 +96,11 @@ int Block::Draw(int value) {
 	if (value != 0) {
 		SDL_Surface* surfaceMessage = TTF_RenderText_Blended(font, charText, color);
 		SDL_Texture* Message = SDL_CreateTextureFromSurface(m_renderer, surfaceMessage);
+		SDL_Rect smaller_rect;
+		smaller_rect.x = m_pos.x + m_pos.h/ 4;
+		smaller_rect.y = m_pos.y + m_pos.h/ 4;
+		smaller_rect.h = m_pos.h / 2;
+		smaller_rect.w = m_pos.h / 2;
 		SDL_RenderCopy(m_renderer, Message, NULL, &m_pos);
 		SDL_FreeSurface(surfaceMessage);
 		SDL_DestroyTexture(Message);

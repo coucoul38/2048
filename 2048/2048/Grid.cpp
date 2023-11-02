@@ -60,7 +60,7 @@ Grid::Grid(int x, int y, SDL_Window* window, SDL_Texture* IMGblockEmpty, SDL_Ren
 				{
 					col[z] = 0;
 				}
-				visualCol[z] = new Block(window, IMGblockEmpty, renderer, (i* size_block), (z * size_block), size_block);
+				visualCol[z] = new Block(window, IMGblockEmpty, renderer, ((i* size_block)), (z * size_block), size_block);
 				mergeCol[z] = false;
 			}
 			grid[i] = col;
