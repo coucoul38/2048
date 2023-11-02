@@ -2,5 +2,7 @@
 C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Block.h(10,1): warning C4099: 'Block' : nom de type déjà rencontré avec 'struct' et utilisant maintenant 'class'
 C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Block.h(9,7): message : voir la déclaration de 'Block'
 C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Grid.cpp(30,13): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Grid.cpp(256): warning C4715: 'Grid::addBlock' : les chemins de contrôle ne retournent pas tous une valeur
+  Integration.cpp
+  Génération de code en cours...
+C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\2048\Grid.cpp(236): warning C4715: 'Grid::addBlock' : les chemins de contrôle ne retournent pas tous une valeur
   2048.vcxproj -> C:\Users\MSI1151\Documents\Devoirs\GTech2\2048\2048\Debug\2048.exe

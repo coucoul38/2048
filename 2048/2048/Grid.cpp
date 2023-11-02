@@ -100,22 +100,22 @@ bool Grid::slide(std::string direction){
 	}
 
 	if (direction == "up") {
-		win = slideUp(true);
+		win = slideUp();
 	}
 	else if (direction == "down") {
-		win = slideDown(true);
+		win = slideDown();
 	}
 	else if (direction == "left") {
-		win = slideLeft(true);
+		win = slideLeft();
 	}
 	else if (direction == "right") {
-		win = slideRight(true);
+		win = slideRight();
 	}
 	//std::cout << "\nWin: " << win << "\n";
 	return win;
 }
 
-bool Grid::slideLeft(bool merge) {
+bool Grid::slideLeft() {
 	bool win = false;
 	for (int col = 0; col < size_y; col++)
 	{
@@ -124,26 +124,21 @@ bool Grid::slideLeft(bool merge) {
 			if (grid[col][row] != 0 && grid[col][row - 1] == 0) {
 				grid[col][row - 1] = grid[col][row];
 				grid[col][row] = 0;
-
-				if (mergeGrid[col][row] == true) {
-					mergeGrid[col][row - 1] = true;
-					mergeGrid[col][row] = false;
-				}
-				slideLeft(false);
+				slideLeft();
 			}
 			else if (grid[col][row - 1] == grid[col][row] && mergeGrid[col][row] == false && mergeGrid[col][row - 1] == false) { //if two blocks are the same, combine them
 				grid[col][row - 1] += grid[col][row];
 				mergeGrid[col][row - 1] = true;
 				grid[col][row] = 0;
-				slideLeft(false);
+				slideLeft();
 
-				if (grid[col][row - 1] == 2048) { win = true; } //win detection
+				if (grid[col][row] == 2048) { win = true; } //win detection
 			}
 		}
 	}
 	return win;
 }
-bool Grid::slideRight(bool merge) {
+bool Grid::slideRight() {
 	bool win = false;
 	for (int col = 0; col < size_x; col++)
 	{
@@ -151,19 +146,13 @@ bool Grid::slideRight(bool merge) {
 			if (grid[col][row] == 0 && grid[col][row - 1] > 0) {
 				grid[col][row] = grid[col][row - 1];
 				grid[col][row - 1] = 0;
-
-				if (mergeGrid[col][row - 1] == true) {
-					mergeGrid[col][row] = true;
-					mergeGrid[col][row - 1] = false;
-				}
-				
-				slideRight(false);
+				slideRight();
 			}
 			else if (grid[col][row - 1] == grid[col][row] && mergeGrid[col][row] == false && mergeGrid[col][row - 1] == false) { //if two blocks are the same, combine them
 				grid[col][row] += grid[col][row - 1];
 				mergeGrid[col][row] = true;
 				grid[col][row - 1] = 0;
-				slideRight(false);
+				slideRight();
 
 				if (grid[col][row] == 2048) { win = true; } //win detection
 			}
@@ -171,56 +160,47 @@ bool Grid::slideRight(bool merge) {
 	}
 	return win;
 }
-bool Grid::slideDown(bool merge) {
-	bool win = false;
-	for (int col = 1; col < size_y; col++)
-	{
-		for (int row = 0; row < size_x; row++) {
-			if (grid[col][row] != 0 && grid[col-1][row] == 0) {
-				grid[col][row - 1] = grid[col][row];
-				grid[col][row] = 0;
-
-				if (mergeGrid[col][row] == true) {
-					mergeGrid[col-1][row] = true;
-					mergeGrid[col][row] = false;
-				}
-				slideLeft(false);
-			}
-			else if (grid[col-1][row] == grid[col][row] && mergeGrid[col][row] == false && mergeGrid[col - 1][row] == false) { //if two blocks are the same, combine them
-				grid[col-1][row] += grid[col][row];
-				mergeGrid[col - 1][row] = true;
-				grid[col][row] = 0;
-				slideLeft(false);
-
-				if (grid[col][row] == 2048) { win = true; } //win detection
-			}
-		}
-	}
-	return win;
-}
-bool Grid::slideUp(bool merge){
+bool Grid::slideDown() {
 	bool win = false;
 	for (int col = size_x - 1; col >= 1; col--)
 	{
 		for (int row = 0; row < size_y; row++) {
 			//std::cout << "\n Col: " << col << " Row: " << row;
-			if (grid[col][row] != 0 && grid[col - 1][row] == 0) {
-				grid[col - 1][row] = grid[col][row];
-				grid[col][row] = 0;
-
-				if (mergeGrid[col][row] == true) {
-					mergeGrid[col - 1][row] = true;
-					mergeGrid[col][row] = false;
-				}
-				slideUp(false);
+			if (grid[col - 1][row] != 0 && grid[col][row] == 0) {
+				grid[col][row] = grid[col - 1][row];
+				grid[col - 1][row] = 0;
+				slideDown();
 			}
-			else if (grid[col - 1][row] == grid[col][row] && mergeGrid[col][row] == false && merge) { //if two blocks are the same, combine them
-				grid[col - 1][row] += grid[col][row];
-				mergeGrid[col - 1][row] = true;
-				grid[col][row] = 0;
-				slideUp(false);
+			else if (grid[col][row] == grid[col - 1][row] && mergeGrid[col - 1][row] == false && mergeGrid[col][row] == false) { //if two blocks are the same, combine them
+				grid[col][row] += grid[col - 1][row];
+				mergeGrid[col][row] = true;
+				grid[col - 1][row] = 0;
+				slideDown();
 
-				if (grid[col - 1][row] == 2048) { win = true; } //win detection
+				if (grid[col][row] == 2048) { win = true; } //win detection
+			}
+		}
+	}
+	return win;
+}
+bool Grid::slideUp(){
+	bool win = false;
+	for (int col = 0; col < size_x-1; col++)
+	{
+		for (int row = 0; row < size_y; row++) {
+			//std::cout << "\n Col: " << col << " Row: " << row;
+			if (grid[col + 1][row] != 0 && grid[col][row] == 0) {
+				grid[col][row] = grid[col + 1][row];
+				grid[col + 1][row] = 0;
+				slideUp();
+			}
+			else if (grid[col][row] == grid[col + 1][row] && mergeGrid[col + 1][row] == false && mergeGrid[col][row] == false) { //if two blocks are the same, combine them
+				grid[col][row] += grid[col + 1][row];
+				mergeGrid[col][row] = true;
+				grid[col + 1][row] = 0;
+				slideUp();
+
+				if (grid[col][row] == 2048) { win = true; } //win detection
 			}
 		}
 	}

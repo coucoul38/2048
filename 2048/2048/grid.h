@@ -23,13 +23,13 @@ public:
 
 	bool slide(std::string direction);
 
-	bool slideLeft(bool merge);
+	bool slideLeft();
 
-	bool slideRight(bool merge);
+	bool slideRight();
 
-	bool slideDown(bool merge);
+	bool slideDown();
 
-	bool slideUp(bool merge);
+	bool slideUp();
 
 	bool addBlock();
 
